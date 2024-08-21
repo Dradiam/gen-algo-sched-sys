@@ -1,7 +1,7 @@
 <?php
 
     $host = 'localhost';
-    $dbname = 'tsu-schedule-mgmt';
+    $dbname = 'gen-algo-sched-sys';
     $username = 'root';
     $password = 'root';
 
