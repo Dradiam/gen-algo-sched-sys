@@ -5,7 +5,6 @@ include 'crossover.php';
 include 'mutation.php';
 include 'selection.php';
 
-// Retrieve form data
 $data = json_decode(file_get_contents("php://input"), true);
 
 if ($data !== null && !empty($data['formData'])) {
@@ -31,14 +30,11 @@ if ($data !== null && !empty($data['formData'])) {
         $subjectClassDays = $selectedGene[2];
 
         try {
-            // Prepare SQL statement
             $sql = "INSERT INTO scheduling (scheduleID, subjectCode, subjectName, subjectClassStart, subjectClassEnd, subjectClassDays)
             VALUES (:scheduleID, :classCode, :className, :subjectClassStart, :subjectClassEnd, :subjectClassDays)"; 
-            //
-            //
+
             $stmt = $pdo->prepare($sql);
 
-            // Bind parameters
             $stmt->bindParam(':scheduleID', $scheduleID);
             $stmt->bindParam(':classCode', $classCode);
             $stmt->bindParam(':className', $className);
@@ -46,7 +42,6 @@ if ($data !== null && !empty($data['formData'])) {
             $stmt->bindParam(':subjectClassEnd', $subjectClassEnd);
             $stmt->bindParam(':subjectClassDays', $subjectClassDays);
 
-            // Execute the statement
             $stmt->execute();
             echo "Data inserted successfully" . "<br>";
 
@@ -58,5 +53,7 @@ if ($data !== null && !empty($data['formData'])) {
         }
     }
 } else {
+    
 }
+
 ?>
